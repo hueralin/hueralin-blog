@@ -1,0 +1,36 @@
+# deploy.yml
+name: Deploy to Tencent Cloud
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 切换到 master 分支
+      - name: checkout master
+        uses: actions/checkout@v2
+        with:
+          ref: 'master'
+      # 使用 node:14
+      - name: use node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      # yarn install
+      - name: yarn install and build
+        run: |
+          yarn install
+          yarn build
+      # Deploy to Tencent Cloud
+      - name: Deploy
+        uses: easingthemes/ssh-deploy@v2.0.0
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.ACTION_MACHINE_KEY }}
+          ARGS: "-avz --delete"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          SOURCE: "/dist"
+          TARGET: ${{ secrets.REMOTE_TARGET }}
+          EXCLUDE: "/dist/, /node_modules/"
