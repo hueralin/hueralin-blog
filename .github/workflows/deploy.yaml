@@ -5,32 +5,32 @@ on:
     branches:
       - master
 jobs:
-  build:
+  Build-and-Deploy:
     runs-on: ubuntu-latest
     steps:
-      # 切换到 master 分支
-      - name: checkout master
+      # Checkout master
+      - name: Checkout master
         uses: actions/checkout@v2
         with:
           ref: 'master'
-      # 使用 node:12
-      - name: use node.js 12
+      # Use Node:12
+      - name: Use Node.js 12
         uses: actions/setup-node@v2
         with:
           node-version: '12'
-      # yarn install
-      - name: yarn install and build
+      # Yarn install
+      - name: Yarn install and Build
         run: |
           yarn install
           yarn build
       # Deploy to Tencent Cloud
-      - name: Deploy
+      - name: Deploy to Tencent Cloud
         uses: easingthemes/ssh-deploy@v2.1.7
         env:
           SSH_PRIVATE_KEY: ${{ secrets.ACTION_MACHINE_KEY }}
           ARGS: "-avz --delete"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          SOURCE: "/dist"
+          SOURCE: "dist/"
           TARGET: ${{ secrets.REMOTE_TARGET }}
           EXCLUDE: "/dist/, /node_modules/"
