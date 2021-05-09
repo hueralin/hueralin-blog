@@ -2,6 +2,8 @@
 title: 使用 VuePress 搭建个人博客
 vssue-title: 使用 VuePress 搭建个人博客
 date: 2021-05-08
+tags:
+  - Github
 ---
 
 > 使用 VuePress 搭建个人博客，并通过 Github Actions 部署到云服务器
