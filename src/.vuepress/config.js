@@ -110,14 +110,15 @@ module.exports = {
         },
 
         // Comments config. See the [Posts Comments] section below.
-        // comments: {
-        //     owner: 'meteorlxy',
-        //     repo: 'vuepress-theme-meteorlxy',
-        //     clientId: 'MY_CLIENT_ID',
-        //     clientSecret: 'MY_CLIENT_SECRET',
-        //     // 开发环境下不自动创建 Issue
-        //     autoCreateIssue: process.env.NODE_ENV !== 'development'
-        // },
+        comments: {
+            platform: 'github',
+            owner: 'hueralin',
+            repo: 'hueralin-blog',
+            clientId: '3dc41f970fe5c2d6e274',
+            clientSecret: 'ddbe31233e4df8a45acf6f80ecfa731cbeaaf498',
+            // 开发环境下不自动创建 Issue
+            autoCreateIssue: process.env.NODE_ENV !== 'development'
+        },
 
         // Pagination config (Optional)
         pagination: {
