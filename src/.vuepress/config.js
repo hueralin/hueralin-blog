@@ -108,7 +108,7 @@ module.exports = {
         // },
 
         // Show the last updated time of your posts
-        lastUpdated: true,
+        lastUpdated: false,
 
         // The content of your navbar links
         nav: [
