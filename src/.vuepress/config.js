@@ -5,6 +5,21 @@ module.exports = {
     // Description of your website
     description: 'Welcome to hueralin’s Blog',
 
+    head: [
+        // 添加百度统计
+        [
+            "script",
+            {},
+            `var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?e3bf87314e0f142f281b7c4a2f198ad7";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();`
+        ]
+    ],
+
     // Language of your website
     locales: {
         '/': {
